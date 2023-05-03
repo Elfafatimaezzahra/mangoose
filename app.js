@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 require('dotenv').config(); 
 
+
 // Connectez-vous à MongoDB en utilisant Mongoose
-mongoose.connect('mongodb+srv://issamefar58:issamassi123@cluster0.jnz5nwy.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('Failed to connect to MongoDB', err));
 
@@ -18,7 +19,7 @@ const Person = mongoose.model('Person', personSchema);
 const person = new Person({
   name: 'amin',
   age: 30,
-  favoriteFoods: ['tajin', 'pidza']
+  favoriteFoods: ['tajin', 'pizza']
 });
 
 person.save()
